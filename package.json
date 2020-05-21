@@ -1,0 +1,16 @@
+{
+  "name": "socket.io-test",
+  "version": "1.0.0",
+  "description": "socket test",
+  "main": "server.js",
+  "scripts": {
+    "test": "",
+    "start": "node server.js"
+  },
+  "author": "hukai",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  }
+}

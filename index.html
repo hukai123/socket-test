@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #login{
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border: 1px solid orange;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        #send{
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border: 1px solid orange;
+            border-radius: 8px;
+        }
+    </style>
+    <!-- <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script> -->
+    <script src="js/socket.io.js"></script>
+</head>
+<body>
+    <div id="login">连接</div>
+    <div id="send">发送</div>
+</body>
+<script type="text/javaScript">
+(function(){
+
+    // var socket = io('http://192.168.31.90:9090?roomName=111');
+    var socket = io('http://192.168.31.101:3000?roomName=111');
+    // socket.emit('chat', '33333');
+
+    socket.on('connect', () => {
+        console.log(socket.id); 
+
+        socket.on('success', data => {
+            console.log(data)
+        })
+
+        socket.on('chat', (msg) => {
+            console.log('msg',msg);
+            
+        });
+        socket.on('msg', (msg) => {
+            console.log('msg',msg);
+            
+        });
+
+
+    });
+
+   
+
+
+
+    var loginBtn = document.querySelector('#login');
+    var sendBtn = document.querySelector('#send');
+    loginBtn.addEventListener("click", function () {
+        alert(111)
+    })
+    sendBtn.addEventListener("click", function () {
+        // alert(2222)
+        socket.emit('chat', '这是发消息');
+    })
+})()
+</script>
+</html>
